@@ -1,0 +1,10 @@
+
+.icon-home:before { content: '\e800'; } /* '' */
+.icon-users:before { content: '\e801'; } /* '' */
+.icon-clock:before { content: '\e802'; } /* '' */
+.icon-phone:before { content: '\e803'; } /* '' */
+.icon-globe:before { content: '\e804'; } /* '' */
+.icon-location:before { content: '\e805'; } /* '' */
+.icon-map:before { content: '\e806'; } /* '' */
+.icon-mail-alt:before { content: '\f0e0'; } /* '' */
+.icon-direction:before { content: '\f124'; } /* '' */

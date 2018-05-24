@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+{#        carrusel de imagenes de portada   #}
+    <div class="col">
+        <div class="row justify-content-center">
+            <div class="carousel slide mt-2" id="secondary-carousel" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#secondary-carousel" data-slid-to="0" class="active"></li>
+                    <li data-target="#secondary-carousel" data-slid-to="1"></li>
+                </ol>
+
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+{#                        <div class="carousel-caption d-block">#}
+{#                            <h4>Titulo de la Imagen</h4>#}
+{#                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, possimus!</p>#}
+{#                        </div>#}
+                        <img class="" src="{% static 'images/carousel1.jpg' %}" alt="">
+                    </div>
+                    <div class="carousel-item">
+{#                        <div class="carousel-caption d-block">#}
+{#                            <h4>Titulo de la Imagen</h4>#}
+{#                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, possimus!</p>#}
+{#                        </div>#}
+                        <img class="" src="{% static 'images/carousel2.jpg' %}" alt="">
+                    </div>
+                </div>
+
+                <a href="#secondary-carousel" class="carousel-control-prev" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+
+                <a href="#secondary-carousel" class="carousel-control-next" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Siguiente</span>
+                </a></div>
+        </div>
+    </div>
+
+    <div class="container mt-5  bg- p-3 mensaje">
+                <h2 class="text-center opensans-4">Nuestros Productos</h2>
+                <h5 class="text-center roboto-3 fc-2">Para mayor información o consulta por un modelo especifico <br> Haz click en Preguntar.</h5>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle opensans-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categoria
+                    </button>
+                    <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item opensans-4" href="{% url 'products:home' %}">Todas</a>
+                        {% for category in categories %}
+                            <a class="dropdown-item opensans-4" href="{% url 'products:search_category' category %}">{{ category }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+    {% for item in object_list %}
+        <div class="col-11 col-sm-4 mb-2">
+            <div class="contenedor border rounded  ">
+                <div class="producto bg-white  ">
+                    <img class="imagen img-fluid p-1" src="{{ item.image.url }}" alt="">
+                    <div class="marcas rounded-top justify-content-center  ">
+                    <div class=" p-2 border-top">
+                    {% for tag in item.tags.all %}
+                        <span class="tags opensans-4">{{ tag }}</span>
+                    {% endfor %}
+                    </div>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-outline-success mr-2 mb-2">Preguntar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="categorias border-top bg-second  p-2 ">
+                    {% for category in item.categories.all %}
+                        <div class="tag d-inline-block roboto-9 f12">
+                            <a href="{% url 'products:search_category' category %}" class="text-muted">{{ category }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

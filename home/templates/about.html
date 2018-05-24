@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+    {#  Mision y vision de la empresa  #}
+    <div class="col-12 ">
+        <div class="row justify-content-center mt-3">
+            <div class="col-6">
+        {#        <div class="">#}
+        {#            <img src="{% static 'images/manos.png' %}" alt="">#}
+        {#        </div>#}
+                <div class="opensans-4 text-center">
+                    <h1 class="roboto-4">Mision</h1>
+                    <p class="">Fredmar panamá es una empresa internacional ofreciendo mercancía para tu vehículo y a su vez dando respuestas oportunas a las necesidades de nuestros clientes ofreciendo los mejores precios del mercado.
+                        Es una empresa dedicada a las ventas por mayor y al detal contando con una red amplia para que desde tu hogar puedas ubicarnos y hacer más fácil tú día a día con solo buscarnos.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-6">
+        {#        <div class="ed-item s-20 img cross-center">#}
+        {#            <img src="{% static 'images/eye2.png' %}" alt="">#}
+        {#        </div>#}
+                <div class="opensans-4 text-center">
+                    <h1 class="roboto-4">Vision</h1>
+                    <p class="">
+                        Fredmar panamá es una empresa internacional ofreciendo mercancía para tu vehículo y a su vez dando respuestas oportunas a las necesidades de nuestros clientes ofreciendo los mejores precios del mercado.
+                        Es una empresa dedicada a las ventas por mayor y al detal contando con una red amplia para que desde tu hogar puedas ubicarnos y hacer más fácil tú día a día con solo buscarnos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#        horario de trabajo y direccion #}
+    <div class="col-12">
+        <div class="row justify-content-center mt-3">
+            <div class="col-12 col-md-6 roboto-3">
+                <p>Horario</p>
+
+                <p class="icon-clock"> 07:00 AM - 12:00 PM</p>
+                <p class="icon-clock">02:00 AM - 05:00 PM</p>
+                <p>Contacto</p>
+                <p class="icon-phone">507-999-888</p>
+                <p class="icon-phone">507-777-888</p>
+            </div>
+            <div class="col-12 col-md-6 roboto-3">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2786.3016904420956!2d-79.48765165368536!3d9.024879781908597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca9e8e031310b%3A0x82ad85bf880861a5!2sCalle+19%2C+Panam%C3%A1!5e0!3m2!1ses-419!2sve!4v1525998606568" width="300" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div >
+                    <p class="icon-location">DIRECCION:CORG. RIO ABAJO CALLE 19 FINAL DE VIA ESPAÑA</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

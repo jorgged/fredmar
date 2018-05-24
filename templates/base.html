@@ -1,0 +1,69 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/fontello.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>Irensel</title>
+</head>
+<body class="bg-second">
+    <div class="container-fluid border-bottom bg-white">
+        <div class="row align-items-end ">
+            <div class="col-2">
+                <img class="img-fluid" src="{% static 'images/fredmar.png' %}" alt="Logo">
+            </div>
+            <div class="col-10">
+                <div class="container text-white  ">
+                    <nav class="nav mt-3 roboto-3">
+                        <a class="nav-link icon-home text-muted" href="{% url 'products:home' %}">Inicio</a>
+                        <a class="nav-link icon-users text-muted" href="{% url 'home:about' %}">Quienes Somos</a>
+                        <a class="nav-link icon-mail-alt text-muted" href="{% url 'products:contact'%}">Contacto</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container bg-white">
+
+
+        <div class="container">
+
+
+
+{#        listado de productos      #}
+            <div class="row ">
+            {#        producto      #}
+                {% block content %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-white border-top">
+        <div class="row">
+                <div class="container mt-">
+                    <div class="footer opensans-4 ">
+                        <span>Todos los derechos reservados</span>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>
