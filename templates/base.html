@@ -10,13 +10,36 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300,400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/fontello.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <title>Irensel</title>
+    <title>Fredmar Panama</title>
 </head>
-<body class="bg-second">
-    <div class="container-fluid border-bottom bg-white">
+<body class="">
+    <div class="sidenav bg-white" id="mySidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a class=" icon-home text-muted" href="{% url 'products:home' %}">Inicio</a>
+        <a class=" icon-users text-muted" href="{% url 'home:about' %}">Quienes Somos</a>
+        <a class="icon-mail-alt text-muted" href="{% url 'products:contact'%}">Contacto</a>
+    </div>
+    <div class="container m-display-none">
+        <div class="row">
+            <div class="col">
+                <a href="javascript:void(0)" class="menu__openbtn " onclick="openNav()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="16" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+{#    cuerpo de la pagina   #}
+    <div class="container m-display-none ">
         <div class="row align-items-end ">
-            <div class="col-2">
-                <img class="img-fluid" src="{% static 'images/fredmar.png' %}" alt="Logo">
+            <div class="col-12 text-center">
+                <img class="img-fluid" src="{% static 'images/FredmarLogo.png' %}" alt="Logo">
+            </div>
+        </div>
+    </div>
+    <div class="container m-display-yes s-display-none">
+        <div class="row align-items-end ">
+            <div class="col-12 col-md-3">
+                <img class="img-fluid" src="{% static 'images/FredmarLogo.png' %}" alt="Logo">
             </div>
             <div class="col-10">
                 <div class="container text-white  ">
@@ -64,6 +87,7 @@
     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 
 </body>
 </html>

@@ -2,9 +2,9 @@
 {% load staticfiles %}
 {% block content %}
 {#        carrusel de imagenes de portada   #}
-    <div class="col">
+    <div class="col-auto">
         <div class="row justify-content-center">
-            <div class="carousel slide mt-2" id="secondary-carousel" data-ride="carousel">
+            <div class="carousel slide mt-2 m-display-yes s-display-none" id="secondary-carousel" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#secondary-carousel" data-slid-to="0" class="active"></li>
                     <li data-target="#secondary-carousel" data-slid-to="1"></li>
@@ -40,22 +40,22 @@
     </div>
 
     <div class="container mt-5  bg- p-3 mensaje">
-                <h2 class="text-center opensans-4">Nuestros Productos</h2>
-                <h5 class="text-center roboto-3 fc-2">Para mayor información o consulta por un modelo especifico <br> Haz click en Preguntar.</h5>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle opensans-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Categoria
-                    </button>
-                    <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item opensans-4" href="{% url 'products:home' %}">Todas</a>
-                        {% for category in categories %}
-                            <a class="dropdown-item opensans-4" href="{% url 'products:search_category' category %}">{{ category }}</a>
-                        {% endfor %}
-                    </div>
-                </div>
+        <h2 class="text-center opensans-4">Nuestros Productos</h2>
+        <h5 class="text-center roboto-3 fc-2">Para mayor información o consulta por un modelo especifico <br> Haz click en Preguntar.</h5>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle opensans-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categoria
+            </button>
+            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item opensans-4" href="{% url 'products:home' %}">Todas</a>
+                {% for category in categories %}
+                    <a class="dropdown-item opensans-4" href="{% url 'products:search_category' category %}">{{ category }}</a>
+                {% endfor %}
             </div>
+        </div>
+    </div>
     {% for item in object_list %}
-        <div class="col-11 col-sm-4 mb-2">
+        <div class="col-11 col-sm-4 mb-2 ">
             <div class="contenedor border rounded  ">
                 <div class="producto bg-white  ">
                     <img class="imagen img-fluid p-1" src="{{ item.image.url }}" alt="">

@@ -27,7 +27,7 @@ SECRET_KEY = 'ih(31i1h#-gz121gjgrn@n!xsxezxm_h)fom8h9usiyd0m8(aj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['jorgged.pythonanywhere.com','127.0.0.1',]
 
 
 # Application definition
@@ -80,23 +80,23 @@ WSGI_APPLICATION = 'fredmarpanama.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'NAME': 'jorgged$fredmar',
+#         'USER': 'jorgged',
+#         'PASSWORD': 'j91829292',
+#         'HOST': 'jorgged.mysql.pythonanywhere-services.com',
+#         'PORT': '',
 #     }
 # }
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jorgged$fredmar',
-        'USER': 'jorgged',
-        'PASSWORD': 'j91829292',
-        'HOST': 'jorgged.mysql.pythonanywhere-services.com',
-        'PORT': '',
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -134,19 +134,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-# STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-# ]
-#
-#
-# MEDIA_URL = '/media/'
-# ENV_PATH = os.path.abspath(os.path.dirname(__file__))
-# MEDIA_ROOT = os.path.join(ENV_PATH, 'media/inventory/')
-
-
-STATIC_ROOT =os.path.join(BASE_DIR,'static')
-STATIC_URL =os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
@@ -157,7 +144,20 @@ MEDIA_URL = '/media/'
 ENV_PATH = os.path.abspath(os.path.dirname(__file__))
 MEDIA_ROOT = os.path.join(ENV_PATH, 'media/inventory/')
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# STATIC_ROOT =os.path.join(BASE_DIR,'static')
+# STATIC_URL =os.path.join(BASE_DIR,'static')
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
+#
+#
+# MEDIA_URL = '/media/'
+# ENV_PATH = os.path.abspath(os.path.dirname(__file__))
+# MEDIA_ROOT = os.path.join(ENV_PATH, 'media/inventory/')
+#
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)

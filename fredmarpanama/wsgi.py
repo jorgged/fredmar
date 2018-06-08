@@ -17,3 +17,5 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fredmarpanama.settings")
 application = get_wsgi_application()
 
 application = DjangoWhiteNoise(application)
+
+# placeholder="eg: /home/jorgged/.virtualenvs/my-webapp-virtualenv
