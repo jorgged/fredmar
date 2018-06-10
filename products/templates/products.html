@@ -1,83 +1,73 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load bootstrap %}
 {% block content %}
-{#        carrusel de imagenes de portada   #}
-    <div class="col-auto">
-        <div class="row justify-content-center">
-            <div class="carousel slide mt-2 m-display-yes s-display-none" id="secondary-carousel" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#secondary-carousel" data-slid-to="0" class="active"></li>
-                    <li data-target="#secondary-carousel" data-slid-to="1"></li>
-                </ol>
-
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-{#                        <div class="carousel-caption d-block">#}
-{#                            <h4>Titulo de la Imagen</h4>#}
-{#                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, possimus!</p>#}
-{#                        </div>#}
-                        <img class="" src="{% static 'images/carousel1.jpg' %}" alt="">
-                    </div>
-                    <div class="carousel-item">
-{#                        <div class="carousel-caption d-block">#}
-{#                            <h4>Titulo de la Imagen</h4>#}
-{#                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, possimus!</p>#}
-{#                        </div>#}
-                        <img class="" src="{% static 'images/carousel2.jpg' %}" alt="">
+    {#  carousel de imagenes  #}
+    {% include 'carousel.html' %}
+    <section>
+        <div class="container mt-3">
+            <h2 class="text-center titulo">Nuestros Productos</h2>
+            <h5 class="text-center subtitulo"><br>Para mayor información o consulta por un modelo especifico&nbsp;<strong>Haz click en Preguntar</strong>.<br><br></h5>
+        </div>
+    </section>
+{#    productos #}
+    <section>
+        <div class="container">
+            {# boton de categorias #}
+            <div class="row justify-content-end">
+                <div class="col-auto">
+                    <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Categorias</button>
+                        <div class="dropdown-menu" role="menu">
+                            <a class="dropdown-item opensans-4" role="presentation" href="{% url 'products:home' %}">Todas</a>
+                            {% for category in categories %}
+                                <a class="dropdown-item" role="presentation" href="{% url 'products:search_category' category %}">{{ category }}</a>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <a href="#secondary-carousel" class="carousel-control-prev" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Anterior</span>
-                </a>
-
-                <a href="#secondary-carousel" class="carousel-control-next" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Siguiente</span>
-                </a></div>
+                {#    tarjeta de producto   #}
+                <div class="row">
+                    {% for item in object_list %}
+                        <div class="col-12 mt-3 col-md-6 col-lg-4">
+                            <div class="tarjeta_producto border"><img src="{{ item.image.url }}" class="imagen_producto">
+                                <div class="marca_producto pt-1 pb-1">
+                                    {% for tag in item.tags.all %}
+                                        <span>{{ tag }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="justify-content-end d-flex">
+                                    <button type="button" class="btn btn-primary mr-1 mb-1 js-preguntar" data-toggle="modal" data-target="#preguntaModal" data-url="{% url 'products:preguntar' %}">Preguntar</button></div>
+                                <div class="categorias border-top p-1">
+                                    {% for category in item.categories.all %}
+                                        <div class="tag d-inline-block roboto-9 f12">
+                                            <a href="{% url 'products:search_category' category %}">{{ category }}</a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
         </div>
-    </div>
-
-    <div class="container mt-5  bg- p-3 mensaje">
-        <h2 class="text-center opensans-4">Nuestros Productos</h2>
-        <h5 class="text-center roboto-3 fc-2">Para mayor información o consulta por un modelo especifico <br> Haz click en Preguntar.</h5>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle opensans-4" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categoria
+    </section>
+        <!-- Modal -->
+    <div class="modal fade" id="preguntaModal" tabindex="-1" role="dialog" aria-labelledby="preguntaModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="preguntaModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
             </button>
-            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item opensans-4" href="{% url 'products:home' %}">Todas</a>
-                {% for category in categories %}
-                    <a class="dropdown-item opensans-4" href="{% url 'products:search_category' category %}">{{ category }}</a>
-                {% endfor %}
-            </div>
+          </div>
+          <div class="modal-body">
+            ....
+          </div>
         </div>
+      </div>
     </div>
-    {% for item in object_list %}
-        <div class="col-sm-11 col-md-4 mb-2 ">
-            <div class="contenedor border rounded  ">
-                <div class="producto bg-white  ">
-                    <img class="imagen img-fluid p-1" src="{{ item.image.url }}" alt="">
-                    <div class="marcas rounded-top justify-content-center  ">
-                    <div class=" p-2 border-top">
-                    {% for tag in item.tags.all %}
-                        <span class="tags opensans-4">{{ tag }}</span>
-                    {% endfor %}
-                    </div>
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-outline-success mr-2 mb-2">Preguntar</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="categorias border-top bg-second  p-2 ">
-                    {% for category in item.categories.all %}
-                        <div class="tag d-inline-block roboto-9 f12">
-                            <a href="{% url 'products:search_category' category %}" class="text-muted">{{ category }}</a>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    {% endfor %}
+
+
 {% endblock %}

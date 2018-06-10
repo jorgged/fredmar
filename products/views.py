@@ -7,12 +7,58 @@ from .models import Product, Product_card, Category, Contacto
 from .form import ContactForm
 
 
+
+
+
+
+
+class AjaxResponseForm(object):
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        if self.request.is_ajax():
+            self.data['form_is_valid'] = True
+            return  JsonResponse(self.data)
+        else:
+            return response
+
+    def form_invalid(self, form):
+        response = super().form_valid(form)
+        if self.request.is_ajax():
+            self.data['form_is_valid'] = False
+            return JsonResponse(self.data)
+        else:
+            return response
+
+
+class PreguntarView(CreateView):
+    form_class = ContactForm
+    data = dict()
+
+    def form_valid(self, form):
+        form.save()
+        self.data['form_is_valid'] = True
+        return JsonResponse(self.data)
+
+    def form_invalid(self, form):
+        self.data['form_is_valid'] = False
+        return JsonResponse(self.data)
+
+
+    def get(self, request, *args, **kwargs):
+        data = dict()
+        context = {'form': ContactForm}
+        data['html_form'] = render_to_string('preguntarForm.html', context, request=request)
+        return JsonResponse(data)
+
+
+
+
+
 class ContactView(CreateView):
     form_class = ContactForm
     success_url = reverse_lazy('products:home')
     template_name = 'contacto.html'
-
-
 
 
 class AjaxCategoryResponseMixin(object):
@@ -28,13 +74,13 @@ class HomeView(ListView):
     model = Product_card
     template_name = 'products.html'
 
-    # def get(self, request, *args, **kwargs):
-    #     self.object_list = self.get_queryset()
-    #     context = self.get_context_data()
-    #     context.update({
-    #         'categories':Category.objects.all(),
-    #     })
-    #     return self.render_to_response(context)
+    def get(self, request, *args, **kwargs):
+        self.object_list = self.get_queryset()
+        context = self.get_context_data()
+        context.update({
+            'contactform':ContactForm(),
+        })
+        return self.render_to_response(context)
 
 class Home(TemplateView):
     template_name = 'base.html'

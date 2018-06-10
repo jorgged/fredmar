@@ -1,0 +1,93 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'old/css/bootstrap.min.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'old/css/fontello.css' %}">
+    <link rel="stylesheet" href="{% static 'old/css/styles.css' %}">
+    <title>Fredmar Panama</title>
+</head>
+<body class="">
+    <div class="sidenav bg-white m-display-none" id="mySidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a class=" icon-home text-muted" href="{% url 'products:home' %}">Inicio</a>
+        <a class=" icon-users text-muted" href="{% url 'home:about' %}">Quienes Somos</a>
+        <a class="icon-mail-alt text-muted" href="{% url 'products:contact'%}">Contacto</a>
+    </div>
+    <div class="container m-display-none">
+        <div class="row">
+            <div class="col">
+                <a href="javascript:void(0)" class="menu__openbtn " onclick="openNav()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="24" viewBox="0 0 12 16"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+{#    cuerpo de la pagina   #}
+    <div class="container m-display-none ">
+        <div class="row align-items-end ">
+            <div class="col-12 text-center">
+                <img class="img-fluid" src="{% static 'old/images/FredmarLogo.png' %}" alt="Logo">
+            </div>
+        </div>
+    </div>
+    <div class="container m-display-yes s-display-none">
+        <div class="row align-items-end ">
+            <div class="col-12 col-md-3">
+                <img class="img-fluid" src="{% static 'old/images/FredmarLogo.png' %}" alt="Logo">
+            </div>
+            <div class="col-md-9">
+                <div class="container text-white  ">
+                    <nav class="nav mt-3 roboto-3">
+                        <a class="nav-link icon-home text-muted" href="{% url 'products:home' %}">Inicio</a>
+                        <a class="nav-link icon-users text-muted" href="{% url 'home:about' %}">Quienes Somos</a>
+                        <a class="nav-link icon-mail-alt text-muted" href="{% url 'products:contact'%}">Contacto</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container bg-white">
+
+
+        <div class="container">
+
+
+
+{#        listado de productos      #}
+            <div class="row ">
+            {#        producto      #}
+                {% block content %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-white border-top">
+        <div class="row">
+                <div class="container mt-">
+                    <div class="footer opensans-4 ">
+                        <span>Todos los derechos reservados</span>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+
+
+
+
+
+    <script src="{% static 'old/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'old/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'old/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'old/js/script.js' %}"></script>
+
+</body>
+</html>
