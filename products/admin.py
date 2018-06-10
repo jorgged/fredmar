@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Product_card, Tag, Contacto
+from .models import Category, Product, Product_card, Tag, Contacto, carousel, logo
 
 # Register your models here.
 
@@ -37,3 +37,15 @@ class ContactAdmin(admin.ModelAdmin):
     search_fields = ['name', 'subject','email','message',]
     list_per_page = 20
 admin.site.register(Contacto, ContactAdmin)
+
+class carouselAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ['name',]
+    list_per_page = 20
+admin.site.register(carousel, carouselAdmin)
+
+class logoAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ['name',]
+    list_per_page = 20
+admin.site.register(logo, logoAdmin)

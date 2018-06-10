@@ -68,11 +68,6 @@ class Product_card(models.Model):
         return f"{self.name}"
 
 
-class settings(models.Model):
-    logo = models.ImageField(upload_to='settings/')
-    def __str__(self):
-        return "settings"
-
 class Contacto(models.Model):
     name = models.CharField(max_length=100)
     subject = models.CharField(max_length=200)
@@ -85,3 +80,22 @@ class Contacto(models.Model):
 
     def __repr__(self):
         return f"{self.name}"
+
+# algunas configuraciones
+
+class logo(models.Model):
+    name = models.CharField(max_length=20)
+    logo = models.ImageField(upload_to='settings/logo')
+    is_active = models.BooleanField(default=True)
+    def __str__(self):
+        return self.name
+
+
+
+class carousel(models.Model):
+    name = models.CharField(max_length=20)
+    imageCarousel = models.ImageField(upload_to='settings/carousel')
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name

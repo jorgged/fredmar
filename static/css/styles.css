@@ -27,10 +27,6 @@ margin-left:5px;
   background-color:var(--third-color);
 }
 
-.btn {
-  background-color:var(--first-color);
-}
-
 .subtitulo {
   font-family:'Roboto';
   color:var(--second-color);
@@ -46,4 +42,44 @@ p {
   font-family:'Roboto';
   font-size:20px;
 }
+.myv{
+background: #D3CCE3;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+}
+
+/*estilos botones*/
+
+.btn-primary {
+  color: #fff;
+  background-color: var(--first-color);
+  border-color: var(--first-color);
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: hsl(160, 96%, 40%);
+  border-color: hsl(160, 96%, 40%);
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem hsla(160, 96%, 45%, 0.5);
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+  color: #fff;
+  background-color: hsla(160, 96%, 45%, 1);
+  border-color: hsla(160, 96%, 45%, 1);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: hsla(160, 96%, 45%, 1);
+  border-color: hsla(160, 96%, 45%, 1);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem hsla(160, 96%, 45%, .5);
+}

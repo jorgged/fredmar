@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, FormView, CreateView
-from .models import Product, Product_card, Category, Contacto
+from .models import Product, Product_card, carousel, logo
 from .form import ContactForm
 
 
@@ -18,7 +18,7 @@ class AjaxResponseForm(object):
         response = super().form_valid(form)
         if self.request.is_ajax():
             self.data['form_is_valid'] = True
-            return  JsonResponse(self.data)
+            return JsonResponse(self.data)
         else:
             return response
 
@@ -77,8 +77,11 @@ class HomeView(ListView):
     def get(self, request, *args, **kwargs):
         self.object_list = self.get_queryset()
         context = self.get_context_data()
+        imglogo = logo.objects.all()
+        imgCarousel = carousel.objects.all()
         context.update({
-            'contactform':ContactForm(),
+            'imgCarousel':imgCarousel,
+            'imglogo':imglogo,
         })
         return self.render_to_response(context)
 
