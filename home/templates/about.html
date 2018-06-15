@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-        <div class="container ">
-        <div class="row myv">
+    <section class="about">
+        <div class="">
+            <div class="container-fluid p-3  text-center texto p-5">
+                <h1 class="titulo">Nosotros</h1>
+    {#            <p class="text-center">Para mayor información o consulta por un modelo especifico&nbsp;<strong>Haz click en Preguntar</strong>.<br></p>#}
+            </div>
+        </div>
+    </section>
+        <div class="container-fluid mt-5">
+        <div class="row ">
             <div class="col-12 col-md-6">
                 <div class="d-flex justify-content-center">
-                    <h1>Visión</h1>
+                    <h1 class="verde">Visión</h1>
                 </div>
                 <div>
                     {% for item in vision %}
@@ -15,7 +23,17 @@
             </div>
             <div class="col-12 col-md-6">
                 <div class="d-flex justify-content-center">
-                    <h1>Misión</h1>
+                    <img src="{% static 'img/eye.png' %}" alt="eye">
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="d-flex justify-content-center">
+                    <img src="{% static 'img/manos.png' %}" alt="hands">
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="d-flex justify-content-center">
+                    <h1 class="verde">Misión</h1>
                 </div>
                 <div>
                     {% for item in mision %}
@@ -27,12 +45,12 @@
         <hr>
         <div class="row">
             <div class="col-12 col-lg-12">
-                <h1 class="text-center">Como Ubicarnos</h1>
+                <h1 class="text-center verde" id="como">Como Ubicarnos</h1>
             </div>
             <div class="col-12 col-md-6">
                 <div>
                     <div>
-                        <p>Horario de Trabajo</p>
+                        <p class="">Horario de Trabajo</p>
                         {% for horario in horarios %}
                             <p><i class="fa fa-clock-o"></i>&nbsp;{{ horario }}</p>
                         {% endfor %}
@@ -46,9 +64,9 @@
                 </div>
             </div>
             <div class="col-12 col-md-5">
-                <div class="embed-responsive embed-responsive-21by9"><iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2786.3016904420956!2d-79.48765165368536!3d9.024879781908597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca9e8e031310b%3A0x82ad85bf880861a5!2sCalle+19%2C+Panam%C3%A1!5e0!3m2!1ses-419!2sve!4v1525998606568"></iframe></div>
-                <p><i class="fa fa-map-marker"></i>&nbsp;DIRECCION:CORG. RIO ABAJO CALLE 19 FINAL DE VIA ESPAÑA</p>
             </div>
         </div>
+                <div class="embed-responsive embed-responsive-21by9"><iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2786.3016904420956!2d-79.48765165368536!3d9.024879781908597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca9e8e031310b%3A0x82ad85bf880861a5!2sCalle+19%2C+Panam%C3%A1!5e0!3m2!1ses-419!2sve!4v1525998606568"></iframe></div>
+                <p><i class="fa fa-map-marker"></i>&nbsp;DIRECCION:CORG. RIO ABAJO CALLE 19 FINAL DE VIA ESPAÑA</p>
     </div>
 {% endblock %}

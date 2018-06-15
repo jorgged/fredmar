@@ -3,6 +3,64 @@
     --second-color:hsl(0, 0%, 75%);
     --third-color:#F0F2F1;
 }
+/*estilos menu*/
+
+
+.anuncio {
+  background-color:hsl(0, 0%, 75%);
+  font-size:20px;
+}
+
+.titulo {
+  color:#000;
+}
+
+.nav-item:hover {
+  border-bottom:2px solid;
+  border-color:#05E197;
+    /*text-decoration: underline;*/
+}
+
+.nav-item:hover {
+  -webkit-transition:all 0.2s Ease-in 0.2s;
+  -moz-transition:all 0.2s Ease-in 0.2s;
+  transition:all 0.2s Ease-in 0.2s;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  /*color:#000;*/
+}
+
+.navbar-light .navbar-brand {
+  color:#000;
+}
+
+.nav-item:hover {
+  -webkit-transition:all 0.2s Ease-in 0.2s;
+  -moz-transition:all 0.2s Ease-in 0.2s;
+  transition:all 0.2s Ease-in 0.2s;
+}
+
+.navbar-light .navbar-nav > .nav-link, .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+  color:#000;
+}
+
+.navbar {
+  color:#000;
+  font-size:20px;
+}
+
+.nav-item {
+  border-bottom:2px solid white;
+}
+
+
+
+
+
+
+
+
 /* estilos productos*/
 .tarjeta_producto .imagen_producto {
 width:100%;
@@ -43,12 +101,12 @@ p {
   font-size:20px;
 }
 .myv{
-background: #D3CCE3;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to bottom, #E9E4F0, #D3CCE3);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to bottom, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+background-color: #4188D4;
+  color: white;
 }
-
+.myv p{
+  color: #9AC9FA;
+}
 /*estilos botones*/
 
 .btn-primary {
@@ -82,4 +140,25 @@ background: linear-gradient(to bottom, #E9E4F0, #D3CCE3); /* W3C, IE 10+/ Edge, 
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem hsla(160, 96%, 45%, .5);
+}
+
+/*quienes somos*/
+
+.about{
+    background-image: url("../img/conference-room.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.texto{
+    background-color: hsla(0, 0%, 10%, 0.9);
+}
+
+.texto h1{
+    color: white;
+}
+
+.verde{
+    color: hsla(160, 96%, 25%, 1);
 }

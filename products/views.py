@@ -3,49 +3,62 @@ from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, FormView, CreateView
-from .models import Product, Product_card, carousel, logo
+from .models import Product, Product_card, carousel, logo, Contacto
 from .form import ContactForm
 
 
-
-
-
-
-
-class AjaxResponseForm(object):
-
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        if self.request.is_ajax():
-            self.data['form_is_valid'] = True
-            return JsonResponse(self.data)
+def save_pregunta_form(request, form):
+    data = dict()
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            data['form_is_valid'] = True
         else:
-            return response
+            data['form_is_valid'] = False
+    context = {'form': form}
+    data['html_form'] = render_to_string('preguntarForm.html', context, request=request)
+    return JsonResponse(data)
 
-    def form_invalid(self, form):
-        response = super().form_valid(form)
-        if self.request.is_ajax():
-            self.data['form_is_valid'] = False
-            return JsonResponse(self.data)
-        else:
-            return response
+
+def Preguntar(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+    else:
+        form = ContactForm()
+    return save_pregunta_form(request, form)
+
 
 
 class PreguntarView(CreateView):
     form_class = ContactForm
-    data = dict()
+    success_url = reverse_lazy('products:home')
+    # data = dict()
+    #
+    # def form_valid(self, form):
+    #     form.save()
+    #     self.data['form_is_valid'] = True
+    #     return JsonResponse(self.data)
+    #
+    # def form_invalid(self, form):
+    #     self.data['form_is_valid'] = False
+    #     return JsonResponse(self.data)
 
-    def form_valid(self, form):
-        form.save()
-        self.data['form_is_valid'] = True
-        return JsonResponse(self.data)
-
-    def form_invalid(self, form):
-        self.data['form_is_valid'] = False
-        return JsonResponse(self.data)
+    def post(self, request, *args, **kwargs):
+        # import ipdb; ipdb.set_trace()
+        data = dict()
+        get_form = self.get_form()
+        form = get_form
+        if form.is_valid():
+            form.save()
+            data['form_is_valid'] = True
+            # return JsonResponse(data)
+        else:
+            data['form_is_valid'] = False
+        return JsonResponse(data)
 
 
     def get(self, request, *args, **kwargs):
+        # import ipdb; ipdb.set_trace()
         data = dict()
         context = {'form': ContactForm}
         data['html_form'] = render_to_string('preguntarForm.html', context, request=request)

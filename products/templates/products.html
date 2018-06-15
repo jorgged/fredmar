@@ -4,17 +4,17 @@
 {% block content %}
     {#  carousel de imagenes  #}
     {% include 'carousel.html' %}
-    <section>
-        <div class="container mt-3">
-            <h2 class="text-center titulo">Nuestros Productos</h2>
-            <h5 class="text-center subtitulo"><br>Para mayor información o consulta por un modelo especifico&nbsp;<strong>Haz click en Preguntar</strong>.<br><br></h5>
+    <section class="anuncio">
+        <div class="container p-3">
+            <h1 class="text-center titulo">Nuestros Productos<br></h1>
+            <p class="text-center">Para mayor información o consulta por un modelo especifico&nbsp;<strong>Haz click en Preguntar</strong>.<br></p>
         </div>
     </section>
 {#    productos #}
     <section>
         <div class="container">
             {# boton de categorias #}
-            <div class="row justify-content-end">
+            <div class="row justify-content-end mt-3">
                 <div class="col-auto">
                     <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Categorias</button>
                         <div class="dropdown-menu" role="menu">

@@ -27,36 +27,21 @@ $(function () {
       dataType: 'json',
       success: function (data) {
         if (data.form_is_valid) {
-          $("#modal-book").modal("hide");
-        }
-        else {
-          $("#modal-book .modal-content").html(data.html_form);
+          $("#preguntaModal").modal("hide");
         }
       }
     });
     return false;
   };
 
-
     /* Binding */
 
     // preguntar
     $(".js-preguntar").click(loadForm);
-    $("#preguntaModal").on("submit", ".js-preguntar-create-form", saveForm);
+    $("#preguntaModal").on("submit", ".js-preguntar-form", saveForm);
 });
 
 
 
 
-
-    // Create book
-    $(".js-create-book").click(loadForm);
-    $("#modal-book").on("submit", ".js-book-create-form", saveForm);
-
-  // Update book
-  $("#book-table").on("click", ".js-update-book", loadForm);
-    $("#modal-book").on("submit", ".js-book-update-form", saveForm);
-
-  // Delete book
-  $("#book-table").on("click", ".js-delete-book", loadForm);
-  $("#modal-book").on("submit", ".js-book-delete-form", saveForm);
+$( ".carousel-item:first-child" ).addClass("active");

@@ -1,11 +1,11 @@
 {% load staticfiles %}
 {% load bootstrap %}
 
-<form role="form" method="post" action="{% url 'products:preguntar' %}">
+<form role="form" method="post" action="{% url 'products:preguntar' %}" class="js-preguntar-form">
     {% csrf_token %}
     {{ form|bootstrap }}
     <div class="form-group" >
-        <button type="submit" class="btn btn-primary js-preguntar-create-form">Enviar</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
     </div>
 </form>
 
