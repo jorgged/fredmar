@@ -116,6 +116,17 @@ class SearchCategory(ListView):
             list = Product_card.objects.all()[:10]
         return list
 
+    def get(self, request, *args, **kwargs):
+        self.object_list = self.get_queryset()
+        context = self.get_context_data()
+        imglogo = logo.objects.all()
+        imgCarousel = carousel.objects.all()
+        context.update({
+            'imgCarousel':imgCarousel,
+            'imglogo':imglogo,
+        })
+        return self.render_to_response(context)
+
 
 
 
